@@ -75,7 +75,8 @@ const burger = document.getElementById('navBurger');
 const navLinks = document.getElementById('navLinks');
 
 if (burger && navLinks) {
-  burger.addEventListener('click', () => {
+  burger.addEventListener('click', (e) => {
+    e.stopPropagation();
     burger.classList.toggle('open');
     navLinks.classList.toggle('open');
   });
@@ -85,5 +86,12 @@ if (burger && navLinks) {
       burger.classList.remove('open');
       navLinks.classList.remove('open');
     });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!navLinks.contains(e.target) && !burger.contains(e.target)) {
+      burger.classList.remove('open');
+      navLinks.classList.remove('open');
+    }
   });
 }
