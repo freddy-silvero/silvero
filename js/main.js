@@ -69,3 +69,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   type();
 });
+
+// Hamburguesa
+const burger = document.getElementById('navBurger');
+const navLinks = document.getElementById('navLinks');
+
+if (burger && navLinks) {
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      burger.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
+  });
+}
